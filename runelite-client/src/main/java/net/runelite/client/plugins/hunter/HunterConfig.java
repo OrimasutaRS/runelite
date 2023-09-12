@@ -91,4 +91,15 @@ public interface HunterConfig extends Config
 	{
 		return false;
 	}
+
+	@ConfigItem(
+			position = 6,
+			keyName = "trapNotify",
+			name = "Trap change notifications",
+			description = "Send notification when a trap fails or when it catches something"
+	)
+	default boolean trapNotify()
+	{
+		return true;
+	}
 }

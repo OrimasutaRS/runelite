@@ -194,13 +194,14 @@ public class HunterPlugin extends Plugin
 				if (myTrap != null)
 				{
 					myTrap.setState(HunterTrap.State.FULL);
-					notifier.notify("A trap has caught something!");
 					myTrap.resetTimer();
 
 					if (config.maniacalMonkeyNotify() && myTrap.getObjectId() == ObjectID.MONKEY_TRAP)
 					{
 						notifier.notify("You've caught part of a monkey's tail.");
 					}
+
+					if (config.trapNotify()) notifier.notify("A trap has caught something!");
 				}
 
 				break;
@@ -215,8 +216,9 @@ public class HunterPlugin extends Plugin
 				if (myTrap != null)
 				{
 					myTrap.setState(HunterTrap.State.EMPTY);
-					notifier.notify("A trap has failed");
 					myTrap.resetTimer();
+
+					if(config.trapNotify()) notifier.notify("A trap has failed");
 				}
 
 				break;
